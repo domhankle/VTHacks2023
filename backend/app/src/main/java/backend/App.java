@@ -5,10 +5,12 @@ package backend;
 
 import main.java.backend.conversion.parser.Parser;
 import main.java.backend.conversion.translator.Translator;
-
 import java.util.ArrayList;
 import main.java.backend.conversion.Token;
+import org.springframework.boot.SpringBootApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class App {
 
     public static void main(String[] args)
