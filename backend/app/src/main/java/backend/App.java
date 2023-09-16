@@ -4,15 +4,27 @@
 package backend;
 
 import main.java.backend.conversion.parser.Parser;
+import main.java.backend.conversion.translator.Translator;
+
 import java.util.ArrayList;
-import main.java.backend.driver.Driver;
 import main.java.backend.conversion.Token;
 
 public class App {
 
     public static void main(String[] args)
     {
-        
+        Parser parser = new Parser();
+
+        ArrayList<String> rawTokens = new ArrayList<>();
+        rawTokens = parser.parse("./src/main/java/backend/conversion/parser/test.java");
+
+        System.out.println(rawTokens);
+
+        Translator translator = new Translator();
+
+        translator.convertRawTokens(rawTokens);
+
+        System.out.println(translator.tokenizedFile);
 
     }
 }
