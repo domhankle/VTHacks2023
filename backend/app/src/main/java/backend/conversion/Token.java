@@ -1,15 +1,7 @@
 package main.java.backend.conversion;
 
 import java.lang.String;
-
-enum TokenType{
-    KEYWORD, 
-    SYMBOL,
-    VARIABLE_NAME,
-    FUNCTION_NAME,
-    PRIMITIVE,
-    INVALID,
-}
+import main.java.backend.conversion.TokenType;
 
 public class Token {
 

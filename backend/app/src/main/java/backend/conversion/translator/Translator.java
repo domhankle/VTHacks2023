@@ -7,48 +7,66 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
 import main.java.backend.conversion.Token;
+import main.java.backend.conversion.TokenType;
 
 public class Translator {
     
-    public HashMap<String, Token> java_keywords = new HashMap<>();
-    public HashMap<String, Token> java_symbols =  new HashhMap<>();
+    private HashMap<String, Token> java_keywords = new HashMap<>();
+    private HashMap<String, Token> java_symbols =  new HashMap<>();
+    private HashMap<String, Token> java_primitives = new HashMap<>();
+    public ArrayList<String> rawTokens = new ArrayList();
 
-
-    public Translator()
+    public Translator(ArrayList<String> collectionOfRawTokens)
     {
-        initializeJavaKeywords();
+        initializeHashMap("java_keywords.txt", this.java_keywords);
+        initializeHashMap("java_symbols.txt", this.java_symbols);
+        initializeHashMap("java_primitives.txt", this.java_primitives);
 
-        for(Token token : java_keywords.values()) {
-            System.out.println(token);
-        }
+        this.rawTokens = collectionOfRawTokens;
     }
 
-    private void initializeJavaKeywords() 
+    private void initializeHashMap(String fileName, HashMap<String, Token> mapToFill) 
     {   
         try{
+            StringBuilder sb = new StringBuilder();
+            sb.append("./src/main/java/backend/conversion/translator/").append(fileName);
+            File file = new File(sb.toString());
+            FileInputStream input = new FileInputStream(file);
 
-            File keywordsFile = new File("./src/main/java/backend/parser/java_keywords.txt");
-            FileInputStream keywordsInput = new FileInputStream(keywordsFile);
-
-            Scanner scanner = new Scanner(keywordsInput);
+            Scanner scanner = new Scanner(input);
 
             while (scanner.hasNext())
             {
-                Token newKeywordToken = new Token(scanner.next(), TokenType.KEYWORD);
-                this.java_keywords.put(newKeywordToken.getRawName(), newKeywordToken);
-            }
 
+                if(fileName.equals("java_keywords.txt"))
+                {
+                    Token newToken = new Token(scanner.next(), TokenType.KEYWORD);
+                    mapToFill.put(newToken.getRawName(), newToken);
+                }
+                else if(fileName.equals("java_symbols.txt"))
+                {
+                    Token newToken = new Token(scanner.next(), TokenType.SYMBOL);
+                    mapToFill.put(newToken.getRawName(), newToken);
+                }
+                else if(fileName.equals("java_primitives.txt"))
+                {
+                    Token newToken = new Token(scanner.next(), TokenType.PRIMITIVE);
+                    mapToFill.put(newToken.getRawName(), newToken);
+                }
+                    
+            }
             scanner.close();
-            keywordsInput.close();
+            input.close();
         }
         catch(Exception e)
         {
             System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
             System.out.println(e);
         }
-        
-        
-        
     }
+
+    private Convert
+
+
 
 }

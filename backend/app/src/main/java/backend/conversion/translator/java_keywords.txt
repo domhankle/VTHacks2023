@@ -5,7 +5,7 @@ case
 catch
 class
 continue
-default maing(String[]) = [ main, (, String, [, ], ) ] CustomObject 
+default
 do
 else
 enum
