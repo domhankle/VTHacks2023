@@ -8,9 +8,10 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
-    id 'application'
+    id 'org.springframework.boot' version '2.6.6' // Use the appropriate version
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' // (Optional) For managing Spring Boot dependencies
 }
+
 
 
 repositories {
@@ -41,11 +42,12 @@ java {
     }
 }
 
-application {
-    // Define the main class for the application.
+
+springBoot {
     mainClass = 'backend.App'
 }
 
-run {
-    standardInput = System.in
+task runSpringBoot(type: org.springframework.boot.gradle.tasks.run.BootRun) {
+    dependsOn 'build'
 }
+
