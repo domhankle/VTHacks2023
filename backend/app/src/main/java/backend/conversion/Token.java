@@ -9,13 +9,6 @@ public class Token {
     private String tokenName;
     private TokenType type;
 
-    public Token()
-    {
-        this.rawName = "";
-        this.tokenName = "invalid";
-        this.type = TokenType.INVALID;
-    }
-
     public Token(String aRawName, TokenType aType)
     {
         this.rawName = aRawName;
@@ -31,6 +24,12 @@ public class Token {
 
     public String getRawName(){
         return this.rawName;
+
+    }
+
+    public TokenType getType()
+    {
+        return this.type;
     }
 
     public void createTokenName()
@@ -50,17 +49,14 @@ public class Token {
             case SYMBOL:
                 sb.append("symbol_").append(this.rawName);
                 break;
-            case VARIABLE_NAME:
-                sb.append("variable_").append(this.rawName);
-                break;
-            case FUNCTION_NAME:
-                sb.append("function_").append(this.rawName);
-                break;
             case PRIMITIVE:
                 sb.append("primitive_").append(this.rawName);
                 break;
-            case INVALID:
-                sb.append("invalid_").append(this.rawName);
+            case USER_DEFINED:
+                sb.append("user_defined_").append(this.rawName);
+                break;
+            case CLASS:
+                sb.append("class_").append(this.rawName);
                 break;
             default:
                 break;
@@ -69,24 +65,17 @@ public class Token {
         return sb.toString();
     }
 
+    public void setTokenType(TokenType newType)
+    {
+        this.type = newType;
+        this.tokenName = this.getCompleteTokenName();
+    }
+
     @Override
     public String toString()
     {
         return this.getCompleteTokenName();
     }
-
-    // @Override
-    // public boolean equals(Object obj)
-    // {
-    //     if(!(obj instanceof Token))
-    //     {
-    //         return false;
-    //     }
-
-        
-    //     return this.type.equals(obj.type);
-    // }
-
 
     @Override
     public int hashCode()

@@ -5,14 +5,14 @@ package backend;
 
 import main.java.backend.conversion.parser.Parser;
 import java.util.ArrayList;
-
+import main.java.backend.driver.Driver;
+import main.java.backend.conversion.Token;
 
 public class App {
 
     public static void main(String[] args)
     {
-        Parser p = new Parser();
-        System.out.println(p.parse("src/main/java/backend/randomClass.java"));
+
 
     }
 }
