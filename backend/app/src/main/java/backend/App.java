@@ -5,28 +5,12 @@ package backend;
 
 import main.java.backend.conversion.translator.Translator;
 import java.util.ArrayList;
-import main.java.backend.conversion.driver.Driver;
+import main.java.backend.driver.Driver;
+import main.java.backend.conversion.Token;
 
 public class App {
 
     public static void main(String[] args)
     {
-        ArrayList<String> rawTokens = new ArrayList();
-
-        rawTokens.add("public");
-        rawTokens.add("static");
-        rawTokens.add("void");
-        rawTokens.add("main");
-        rawTokens.add("(");
-        rawTokens.add("String");
-        rawTokens.add("[");
-        rawTokens.add("]");
-        rawTokens.add("args");
-        rawTokens.add(")");
-        
-        for(String rawToken : rawTokens)
-        {
-            System.out.println(rawToken);
-        }
     }
 }

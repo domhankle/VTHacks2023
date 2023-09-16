@@ -45,3 +45,7 @@ application {
     // Define the main class for the application.
     mainClass = 'backend.App'
 }
+
+run {
+    standardInput = System.in
+}

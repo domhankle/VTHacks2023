@@ -14,15 +14,15 @@ public class Translator {
     private HashMap<String, Token> java_keywords = new HashMap<>();
     private HashMap<String, Token> java_symbols =  new HashMap<>();
     private HashMap<String, Token> java_primitives = new HashMap<>();
-    public ArrayList<String> rawTokens = new ArrayList();
 
-    public Translator(ArrayList<String> collectionOfRawTokens)
+    public ArrayList<Token> tokenizedFile = new ArrayList();
+
+    public Translator()
     {
         initializeHashMap("java_keywords.txt", this.java_keywords);
         initializeHashMap("java_symbols.txt", this.java_symbols);
         initializeHashMap("java_primitives.txt", this.java_primitives);
 
-        this.rawTokens = collectionOfRawTokens;
     }
 
     private void initializeHashMap(String fileName, HashMap<String, Token> mapToFill) 
@@ -65,7 +65,38 @@ public class Translator {
         }
     }
 
+    public void convertRawTokens(ArrayList<String> rawTokens)
+    {
+        for(String rawToken : rawTokens)
+        {
+            if(this.java_keywords.containsKey(rawToken))
+            {
+                tokenizedFile.add(this.java_keywords.get(rawToken));
+            }
+            else if(this.java_symbols.containsKey(rawToken))
+            {
+                tokenizedFile.add(this.java_symbols.get(rawToken));
+            }
+            else if(this.java_primitives.containsKey(rawToken))
+            {
+                tokenizedFile.add(this.java_primitives.get(rawToken));
+            }
+            else
+            {
+                tokenizedFile.add(new Token(rawToken, TokenType.USER_DEFINED));
+            }
+        }
 
 
+        for(int i = 0; i < tokenizedFile.size(); ++i)
+        {
+            if(tokenizedFile.get(i).getRawName().equals("class"))
+            {
+            
+                tokenizedFile.get(i + 1).setTokenType(TokenType.CLASS);
+                
+            }
+        }
+    }
 
 }
