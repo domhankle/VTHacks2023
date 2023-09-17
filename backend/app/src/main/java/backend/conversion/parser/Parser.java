@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 
 public class Parser {
-    public ArrayList<String> parse(String path) {
-        String input = readFileToString(path);
-        return digest(input, " ");
+    public ArrayList<String> parse(String fileString) {
+        
+        return digest(fileString, " ");
 
     }
 

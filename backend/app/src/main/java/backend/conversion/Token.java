@@ -6,7 +6,7 @@ import main.java.backend.conversion.TokenType;
 public class Token {
 
     private String rawName;
-    private String tokenName;
+    public String tokenName;
     private TokenType type;
 
     public Token(String aRawName, TokenType aType)
