@@ -35,6 +35,11 @@ public class Parser {
                     char c = curr.charAt(i);
                     if (!Character.isLetterOrDigit(c) && !Character.isWhitespace(c) && !Character.isJavaIdentifierPart(c)) {
                         tokList.addAll(digest(curr, Character.toString(c)));
+
+                        if (i == curr.length() - 1) {
+                            tokList.add(Character.toString(c));
+                        }
+
                         break;
                     }
                 }
