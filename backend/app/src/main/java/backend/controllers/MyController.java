@@ -36,7 +36,6 @@ public class MyController {
     @GetMapping("/translate")
     ArrayList<Token> translate(){
         Translator translator = new Translator();
-        this.rawTokens.add("main");
         translator.convertRawTokens(rawTokens);
         return translator.tokenizedFile;
     }
