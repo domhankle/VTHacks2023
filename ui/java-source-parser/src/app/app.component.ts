@@ -16,10 +16,18 @@ export class AppComponent {
   ) {}
 
   public ngOnInit() {
-    this.endpointService.putFileString(
-      'public static void main(String[] args)'
-    );
+    this.initializeData();
+  }
 
+  public async initializeData(): Promise<void> {
+    await this.putFileString();
     this.endpointService.getTokens();
+  }
+
+  public async putFileString(): Promise<void> {
+    await this.endpointService.putFileString(
+      'public static void main(String[] args )'
+    );
+    return Promise.resolve();
   }
 }

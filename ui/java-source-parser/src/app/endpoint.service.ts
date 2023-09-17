@@ -22,7 +22,7 @@ export class EndpointService {
   public putFileString(fileString: string): void {
     this.http.put('http://localhost:8080/tokens/parse', fileString).subscribe(
       (response) => {
-        console.log(response);
+        console.log(fileString);
       },
       (error) => {
         console.error(error);
