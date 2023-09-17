@@ -8,7 +8,15 @@ import { Input } from '@angular/core';
 })
 export class FileInputComponent {
   @Input() title: string;
+
+  @Input() fileString: string;
+
   constructor() {
     this.title = '';
+    this.fileString = '';
+  }
+
+  setTextContent() {
+    console.log(this.fileString);
   }
 }

@@ -8,6 +8,7 @@ import { EndpointService } from './endpoint.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FileInputComponent } from './file-section/file-input/file-input.component';
 import { FileSectionComponent } from './file-section/file-section.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { FileSectionComponent } from './file-section/file-section.component';
     FileInputComponent,
     FileSectionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [EndpointService],
   bootstrap: [AppComponent],
 })

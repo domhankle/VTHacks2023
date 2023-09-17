@@ -1,8 +1,8 @@
 <div class="section">
-    <app-file-input [title]="title1"></app-file-input>
+    <app-file-input class="file-input-1" #input1 [title]="title1"></app-file-input>
     <div class="compare-interact-section">
         <h2 class="percent-text">{{similarityPercentage}}%</h2>
-        <button class="compare-button">Compare</button>
+        <button class="compare-button" (click)="onCompareClick()">Compare</button>
     </div>
-    <app-file-input [title]="title2"></app-file-input>
+    <app-file-input class="file-input-2" #input2 [title]="title2"></app-file-input>
 </div>
