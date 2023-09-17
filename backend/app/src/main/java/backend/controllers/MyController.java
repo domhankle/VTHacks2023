@@ -4,15 +4,40 @@
 package main.java.backend.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.ArrayList;
+
+import main.java.backend.conversion.translator.Translator;
+import main.java.backend.conversion.parser.Parser;
+import main.java.backend.conversion.Token;
+import main.java.backend.conversion.TokenType;
 
 
 @RestController
+@RequestMapping("/tokens")
 public class MyController {
 
-    @GetMapping("/home")
-    String home(){
-        return "Hello World!";
+    private String fileString = new String();
+    private ArrayList<String> rawTokens = new ArrayList<>();
+
+    @PutMapping("/parse")
+    void parse(@RequestBody String newFileString)
+    {
+        Parser parser = new Parser();
+        this.fileString = newFileString;
+        this.rawTokens = parser.parse(this.fileString);
+        
+    }
+
+
+    @GetMapping("/translate")
+    ArrayList<Token> translate(){
+        Translator translator = new Translator();
+        this.rawTokens.add("main");
+        translator.convertRawTokens(rawTokens);
+        return translator.tokenizedFile;
     }
 }
