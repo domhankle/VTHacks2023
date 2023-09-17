@@ -29,7 +29,6 @@ public class MyController {
         Parser parser = new Parser();
         this.fileString = newFileString;
         this.rawTokens = parser.parse(this.fileString);
-        
     }
 
 

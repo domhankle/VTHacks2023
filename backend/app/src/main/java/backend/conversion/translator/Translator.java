@@ -91,7 +91,7 @@ public class Translator {
         }
 
 
-        for(int i = 0; i < tokenizedFile.size(); ++i)
+        for(int i = 0; i < tokenizedFile.size(); i++)
         {
             if(tokenizedFile.get(i).getRawName().equals("class"))
             {
