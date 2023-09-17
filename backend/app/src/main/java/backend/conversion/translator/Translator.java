@@ -41,16 +41,19 @@ public class Translator {
                 if(fileName.equals("java_keywords.txt"))
                 {
                     Token newToken = new Token(scanner.next(), TokenType.KEYWORD);
+                    
                     mapToFill.put(newToken.getRawName(), newToken);
                 }
                 else if(fileName.equals("java_symbols.txt"))
                 {
                     Token newToken = new Token(scanner.next(), TokenType.SYMBOL);
+                    
                     mapToFill.put(newToken.getRawName(), newToken);
                 }
                 else if(fileName.equals("java_primitives.txt"))
                 {
                     Token newToken = new Token(scanner.next(), TokenType.PRIMITIVE);
+                    
                     mapToFill.put(newToken.getRawName(), newToken);
                 }
                     
@@ -88,7 +91,7 @@ public class Translator {
         }
 
 
-        for(int i = 0; i < tokenizedFile.size(); ++i)
+        for(int i = 0; i < tokenizedFile.size(); i++)
         {
             if(tokenizedFile.get(i).getRawName().equals("class"))
             {
