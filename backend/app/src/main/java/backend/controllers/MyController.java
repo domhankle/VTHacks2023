@@ -14,28 +14,38 @@ import main.java.backend.conversion.translator.Translator;
 import main.java.backend.conversion.parser.Parser;
 import main.java.backend.conversion.Token;
 import main.java.backend.conversion.TokenType;
+import main.java.backend.comparison.Comparator;
 
 
 @RestController
 @RequestMapping("/tokens")
 public class MyController {
 
-    private String fileString = new String();
-    private ArrayList<String> rawTokens = new ArrayList<>();
+    private String fileString1 = new String();
+    private String fileString2 = new String();
+    private ArrayList<String> rawTokens1 = new ArrayList<>();
+    private ArrayList<String> rawTokens2 = new ArrayList<>();
 
     @PutMapping("/parse")
-    void parse(@RequestBody String newFileString)
+    void parse(@RequestBody String[] fileStrings)
     {
         Parser parser = new Parser();
-        this.fileString = newFileString;
-        this.rawTokens = parser.parse(this.fileString);
+        this.fileString1 = fileStrings[0];
+        this.fileString2 = fileStrings[1];
+        this.rawTokens1 = parser.parse(this.fileString1);
+        this.rawTokens2 = parser.parse(this.fileString2);
     }
 
 
-    @GetMapping("/translate")
-    ArrayList<Token> translate(){
+    @GetMapping("/compare")
+    double translate(){
         Translator translator = new Translator();
-        translator.convertRawTokens(rawTokens);
-        return translator.tokenizedFile;
+        translator.convertRawTokens(rawTokens1);
+
+        Translator translator2 = new Translator();
+        translator2.convertRawTokens(rawTokens2);
+
+        Comparator comparator = new Comparator();
+        return comparator.compare(translator.tokenizedFile, translator2.tokenizedFile);
     }
 }

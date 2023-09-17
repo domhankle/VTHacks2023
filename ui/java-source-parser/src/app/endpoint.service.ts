@@ -8,25 +8,17 @@ import { Observable } from 'rxjs';
 export class EndpointService {
   constructor(private http: HttpClient) {}
 
-  public getTokens(): void {
-    this.http.get('http://localhost:8080/tokens/translate').subscribe(
-      (response) => {
-        console.log(response); // This should print "Hello World!"
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  public getSimilarity(): Observable<any> {
+    return this.http.get('http://localhost:8080/tokens/compare');
   }
 
-  public putFileString(fileString: string): void {
-    this.http.put('http://localhost:8080/tokens/parse', fileString).subscribe(
-      (response) => {
-        console.log(fileString);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  public putFileStrings(
+    fileString1: string,
+    fileString2: string
+  ): Observable<any> {
+    return this.http.put('http://localhost:8080/tokens/parse', [
+      fileString1,
+      fileString2,
+    ]);
   }
 }

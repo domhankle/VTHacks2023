@@ -16,7 +16,5 @@ export class FileInputComponent {
     this.fileString = '';
   }
 
-  setTextContent() {
-    console.log(this.fileString);
-  }
+  setTextContent() {}
 }
