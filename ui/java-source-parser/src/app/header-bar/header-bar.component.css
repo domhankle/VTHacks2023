@@ -1,10 +1,10 @@
 
 
 h1{
-    color:#934725;
+    color:#562610;
     text-align: center;
     font-family: 'Outfit', sans-serif;
-    font-size: 50px;
+    font-size: 65px;
 	line-height: 1em;
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -13,12 +13,12 @@ h1{
 }
 
 .container{
-    background-color: #934725;
+    background-color: #562610;
     text-align: center;
 }
 
 img{
-
+    
 	margin-bottom: 25px;
     margin-top: 25px;
 }

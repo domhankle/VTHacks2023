@@ -7,12 +7,16 @@
     height: 500px;
 
     padding: 0 !important;
-    background-color: #934725;
+    background-color: #562610;
     border-radius: 1%;
+    border-width: 2px;
+
     
 }
 .title{
-  color: #ffeacb
+  color: #ffeacb;
+  font-family: 'Outfit', sans-serif;
+
 }
 .text-box{
     width: 80%;

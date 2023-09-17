@@ -1,7 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+
+}
+
+
 body{
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-    padding-bottom: 200px;
+    padding-bottom: 300px;
+
 }
+
+html{
+	background:url('./assets/1backL.jpg');
+	background-size: cover;
+	background-repeat:no-repeat; 
+  background-position: top-center;
+  
+  width: 100%;
+
+}
+
