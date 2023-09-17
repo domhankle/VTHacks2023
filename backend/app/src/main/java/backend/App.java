@@ -3,15 +3,37 @@
  */
 package backend;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.ArrayList;
+import main.java.backend.comparison.Comparator;
+import main.java.backend.conversion.Token;
+import main.java.backend.conversion.TokenType;
 
-@SpringBootApplication
+
 public class App {
 
     public static void main(String[] args)
     {
-        SpringApplication.run(App.class, args);
+        ArrayList<Token> list1 = new ArrayList<>();
+        ArrayList<Token> list2 = new ArrayList<>();
+
+        String[] str1 = {"Yo", "*", "main", "somerandomshit", "double"};
+        String[] str2 = {"Heyyyy", ",", "for", "each", "int"};
+
+        TokenType[] types1 = {TokenType.KEYWORD, TokenType.SYMBOL, TokenType.KEYWORD, TokenType.USER_DEFINED, TokenType.PRIMITIVE};
+        TokenType[] types2 = {TokenType.USER_DEFINED, TokenType.SYMBOL, TokenType.KEYWORD, TokenType.KEYWORD, TokenType.PRIMITIVE};
+
+        for (int i = 0; i<5; i++) {
+            list1.add(new Token(str1[i], types1[i]));
+            list2.add(new Token(str2[i], types2[i]));
+        }
+
+        Comparator comp = new Comparator();
+
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println(comp.compare(list1, list2));
+
+
 
     }
 }

@@ -88,7 +88,7 @@ public class Token {
         if (type.equals(TokenType.USER_DEFINED)) {
             return type.equals(((Token) rhs).getType());
         } else {
-            return tokenName.equals(rhs.getCompleteTokenName());
+            return tokenName.equals(((Token) rhs).getCompleteTokenName());
         }
     }
 }

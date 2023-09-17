@@ -11,7 +11,7 @@ public class Comparator {
     
 
     public double compare(ArrayList<Token> list1, ArrayList<Token> list2) {
-        return calcEditDistance(list1, list2);
+        return (calcJaccard(list1, list2) + calcEditDistance(list1, list2)) / 2.0;
     }
 
     private double calcJaccard(ArrayList<Token> list1, ArrayList<Token> list2) {
@@ -41,8 +41,8 @@ public class Comparator {
         return 0.0;
     }
 
-    private int calcEditDistance() {
-        public static double calculateEditDistance(ArrayList<Token> list1, ArrayList<Token> list2) {
+    
+    private double calcEditDistance(ArrayList<Token> list1, ArrayList<Token> list2) {
         int m = list1.size();
         int n = list2.size();
 
@@ -55,7 +55,7 @@ public class Comparator {
                 } else if (j == 0) {
                     dp[i][j] = i;
                 } else {
-                    int distance = calculateObjectDistance(list1.get(i - 1), list2.get(j - 1));
+                    int distance = calcObjectDistance(list1.get(i - 1), list2.get(j - 1));
 
                     dp[i][j] = Math.min(
                         Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1),
@@ -70,16 +70,16 @@ public class Comparator {
         return 1.0 - (dp[m][n] / maxPossibleDistance);
     }
 
-    public double calcObjectDistance(Token tok1, Token tok2) {
+    private int calcObjectDistance(Token tok1, Token tok2) {
         // If tok1 and tok2 are both user defined they are equal
         if (tok1.getType().equals(TokenType.USER_DEFINED) && tok2.getType().equals(TokenType.USER_DEFINED)) {
             return 0;
         } else {
-            return calcStringDistance(tok1.getCompleteTokenName(), tok2.getCompleteTokenName());
+            return calcStringDistance(tok1.toString(), tok2.toString());
         }
     }
 
-    private static int calculateStringDistance(String s1, String s2) {
+    private static int calcStringDistance(String s1, String s2) {
         int[][] dp = new int[s1.length() + 1][s2.length() + 1];
 
         for (int i = 0; i <= s1.length(); i++) {
