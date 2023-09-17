@@ -82,4 +82,13 @@ public class Token {
     {
         return this.type.hashCode() + this.rawName.hashCode();
     }
+
+    @Override 
+    public boolean equals(Object rhs) {
+        if (type.equals(TokenType.USER_DEFINED)) {
+            return type.equals(((Token) rhs).getType());
+        } else {
+            return tokenName.equals(rhs.getCompleteTokenName());
+        }
+    }
 }
