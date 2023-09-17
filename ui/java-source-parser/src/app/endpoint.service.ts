@@ -8,16 +8,25 @@ import { Observable } from 'rxjs';
 export class EndpointService {
   constructor(private http: HttpClient) {}
 
-  public getHelloWorld(): void {
-    this.http
-      .get('http://localhost:8080/home', { responseType: 'text' })
-      .subscribe(
-        (response: string) => {
-          console.log(response); // This should print "Hello World!"
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+  public getTokens(): void {
+    this.http.get('http://localhost:8080/tokens/translate').subscribe(
+      (response) => {
+        console.log(response); // This should print "Hello World!"
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  public putFileString(fileString: string): void {
+    this.http.put('http://localhost:8080/tokens/parse', fileString).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }

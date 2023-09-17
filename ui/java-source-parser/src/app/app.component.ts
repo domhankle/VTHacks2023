@@ -16,6 +16,10 @@ export class AppComponent {
   ) {}
 
   public ngOnInit() {
-    this.endpointService.getHelloWorld();
+    this.endpointService.putFileString(
+      'public static void main(String[] args)'
+    );
+
+    this.endpointService.getTokens();
   }
 }
